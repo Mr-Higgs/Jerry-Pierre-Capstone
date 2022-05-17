@@ -4,6 +4,7 @@ import { Component } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import Input from '../../Components/Input/Input'
+import Footer from '../../Components/Footer/Footer'
 
 class SignUpPage extends Component {
     state = {
@@ -34,12 +35,10 @@ class SignUpPage extends Component {
         return (
             <main className="signup-page">
                 <form className="signup" onSubmit={this.handleSubmit}>
-                    <h1 className="signup__title">Sign up</h1>
+                    <h1 className="signup__title">Create a new account</h1>
 
                     <Input type="text" name="first_name" label="First name" />
                     <Input type="text" name="last_name" label="Last name" />
-                    <Input type="text" name="phone" label="Phone" />
-                    <Input type="text" name="address" label="Address" />
                     <Input type="text" name="email" label="Email" />
                     <Input type="password" name="password" label="Password" />
 
@@ -48,12 +47,13 @@ class SignUpPage extends Component {
                     {this.state.success && <div className="signup__message">Signed up!</div>}
                     {this.state.error && <div className="signup__message">{this.state.error}</div>}
                 </form>
-                <p>
+                <p className="signup-page__text">
                     Have an account? <Link to="/login">Log in</Link>
                 </p>
+                <Footer/>
             </main>
         );
     }
 }
 
-export default SignUpPage
+export default SignUpPage;

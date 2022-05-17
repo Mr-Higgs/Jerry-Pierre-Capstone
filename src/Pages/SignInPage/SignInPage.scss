@@ -1,0 +1,64 @@
+@use '../../Styles/Partials/colors';
+
+.login-page {
+    background-color: colors.$davys-grey;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    background: url("../../Assets/Images/chart-hero.jpg") no-repeat center fixed;
+    max-width: 100%;
+    background-size: cover;
+
+    &__text{
+        color: white;
+    }
+}
+
+.login {
+    display: flex;
+    flex-direction: column;
+    width: 22rem;
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    border-radius: 0.5rem;
+    padding: 2rem 1.5rem;
+    margin-bottom: 1rem;
+    background-color: rgba(255, 255, 255, .15);  
+    backdrop-filter: blur(5px);
+
+    &__title {
+        margin-top: 0;
+        margin-bottom: 1.5rem;
+        color: white;
+        text-align: center;
+        font-size: 1.5rem;
+        border-bottom: 5px solid #49fb35;
+        padding-bottom: 0.5rem;
+        align-self: center;
+    }
+
+    &__button {
+        margin-top: 1rem;
+        background-color: colors.$dark-green;
+        border: 1px solid colors.$dark-green;
+        color: #fff;
+        border-radius: 0.5rem;
+        padding: 0.5rem;
+        font-size: inherit;
+        cursor: pointer;
+        transition: background-color 0.15s;
+
+        &:hover {
+            background-color: colors.$forest-green;
+        }
+    }
+
+    &__message {
+        border-left: 5px solid #ddd;
+        padding: 0.75rem;
+        margin-top: 2rem;
+    }
+}

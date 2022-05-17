@@ -1,0 +1,17 @@
+@use '../../Styles/Partials/colors';
+
+.footer{
+    list-style: none;
+    padding: 0rem;
+    display: flex;
+    flex-direction: column;
+
+    &__socials{
+
+        &-icon{
+            margin: 1rem;
+            height: 2rem;
+            width: 2rem;
+        }
+    }
+}
