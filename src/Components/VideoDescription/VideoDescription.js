@@ -1,8 +1,22 @@
 import React from 'react'
 
-function VideoDescription() {
+function VideoDescription({selectedVideo}) {
   return (
-    <div>VideoDescription</div>
+    <div>
+      <h1 className="videodescription__title">
+        {selectedVideo.title}
+      </h1>
+      <div className="videodescription__tab">
+        <div className="videodescription__tab-container">
+          <p className="videodescription__tab-container-channel">
+            Chapter: {selectedVideo.chapter}
+          </p>
+        </div>
+      </div>
+      <p className="videodescription__description">
+        {selectedVideo.content}
+      </p>
+    </div>
   )
 }
 

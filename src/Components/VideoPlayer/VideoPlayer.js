@@ -1,11 +1,16 @@
 import React from 'react'
+import "./VideoPlayer.scss"
 
-function VideoPlayer() {
+function VideoPlayer({title, chapter, id, VideoFn}) {
   return (
-    <div>
-      {/* use this i-frame for the main video player */}
-      <div class="ratio ratio-16x9">
-        {/* <iframe src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" title="YouTube video" allowfullscreen></iframe> */}
+    <div className="videoplayer" onClick={() => {VideoFn(id) }}>
+      <div className="videoplayer__container">
+        <h4 className="videoplayer__container-title">
+          {title}
+        </h4>
+        <p className="videoplayer__container-channel">
+          {chapter}
+        </p>
       </div>
     </div>
   )

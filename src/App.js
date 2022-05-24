@@ -2,7 +2,8 @@ import { Component } from "react";
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import './App.scss';
 import HomePage from './Pages/HomePage/HomePage';
-// import LandingPage from './Pages/LandingPage/LandingPage';
+import Dashboard from "./Pages/DashboardPage/DashboardPage";
+import LandingPage from './Pages/LandingPage/LandingPage';
 import SignUpPage from './Pages/SignUpPage/SignUpPage';
 import SignInPage from './Pages/SignInPage/SignInPage';
 import Header from './Components/Header/Header';
@@ -17,10 +18,13 @@ class App extends Component {
                 <Route path="/" exact>
                   <HomePage /> 
                 </Route>
-                {/* <Route path="/about">
+                <Route path="/current" exact>
+                  <Dashboard />
+                </Route>
+                <Route path="/about">
                   <LandingPage />
-                </Route> */}
-                <Route path="/signup">
+                </Route>
+                <Route path="/register">
                   <SignUpPage />
                 </Route>
                 <Route path="/login">

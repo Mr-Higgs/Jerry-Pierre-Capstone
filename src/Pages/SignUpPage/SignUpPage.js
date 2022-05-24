@@ -16,19 +16,19 @@ class SignUpPage extends Component {
         event.preventDefault();
 
         axios
-            .post("http://localhost:3000/api/users/register", {
-                email: event.target.email.value,
-                password: event.target.password.value,
-                first_name: event.target.first_name.value,
-                last_name: event.target.last_name.value,
-            })
-            .then(() => {
-                this.setState({ success: true, error: "" });
-                event.target.reset();
-            })
-            .catch((error) => {
-                this.setState({ success: false, error: error.response.data });
-            });
+        .post("http://localhost:3000/api/users/register", {
+            email: event.target.email.value,
+            password: event.target.password.value,
+            first_name: event.target.first_name.value,
+            last_name: event.target.last_name.value,
+        })
+        .then(() => {
+            this.setState({ success: true, error: "" });
+            event.target.reset();
+        })
+        .catch((error) => {
+            this.setState({ success: false, error: error.response.data });
+        });
     };
 
     render() {
@@ -41,7 +41,7 @@ class SignUpPage extends Component {
                     <Input type="text" name="last_name" label="Last name" />
                     <Input type="text" name="email" label="Email" />
                     <Input type="password" name="password" label="Password" />
-
+                    
                     <button className="signup__button">Sign up</button>
 
                     {this.state.success && <div className="signup__message">Signed up!</div>}

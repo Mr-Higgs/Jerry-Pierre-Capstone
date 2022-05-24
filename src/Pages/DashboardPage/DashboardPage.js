@@ -1,12 +1,12 @@
 import "./DashboardPage.scss";
 import { Component } from "react";
 import axios from 'axios';
-import { Link } from "react-router-dom";
+import UserCoursePage from "../UserCoursePage/UserCoursePage";
 
 class DashboardPage extends Component {
     state = {
         user: null,
-        failedAuth: false
+        failedAuth: false,
     }
 
     componentDidMount() {
@@ -19,21 +19,21 @@ class DashboardPage extends Component {
 
         // Get the data from the API
         axios
-            .get('http://localhost:3000/api/users/current', {
-                headers: {
-                    Authorization: 'Bearer ' + token
-                }
-            })
-            .then((response) => {
-                this.setState({
-                    user: response.data
-                });
-            })
-            .catch(() => {
-                this.setState({
-                    failedAuth: true
-                })
+        .get('http://localhost:3000/api/users/current', {
+            headers: {
+                Authorization: 'Bearer ' + token
+            }
+        })
+        .then((response) => {
+            this.setState({
+                user: response.data
             });
+        })
+        .catch(() => {
+            this.setState({
+                failedAuth: true
+            })
+        });
     }
 
     handleLogout = () => {
@@ -49,7 +49,15 @@ class DashboardPage extends Component {
         if (this.state.failedAuth) {
             return (
                 <main className="dashboard">
-                    <p>You must be logged in to see this page. <Link to="/login">Log in</Link></p>
+                    <div className="card">
+                        <h5 className="card-header">Dashboard</h5>
+                        <div className="card-body">
+                            <h5 className="card-title">You must be logged in to see this page.</h5>
+                            <p className="card-text">If you don't have an account please sign up for access.</p>
+                            <a href="/login" className="btn btn-success mx-2">Log In</a>
+                            <a href="/register" className="btn btn-success">Sign Up</a>
+                        </div>
+                    </div>
                 </main>
             )
         }
@@ -57,7 +65,9 @@ class DashboardPage extends Component {
         if (!this.state.user) {
             return (
                 <main className="dashboard">
-                    <p>Loading...</p>
+                    <div className="spinner-border text-primary" role="status">
+                        <span className="visually-hidden">Loading...</span>
+                    </div>
                 </main>
             )
         }
@@ -67,13 +77,13 @@ class DashboardPage extends Component {
         return (
             <main className="dashboard">
                 <h1 className="dashboard__title">Dashboard</h1>
-                <p>
+                <p className="dashboard__greeting">
                     Welcome back, {first_name} {last_name}! 👋
                 </p>
                 <h2>My Profile</h2>
-                <p>Email: {email}</p>
-
-                <button className="dashboard__logout" onClick={this.handleLogout}>
+                <p>Username: {email}</p>
+                <UserCoursePage />
+                <button className="dashboard__logout btn btn-success" onClick={this.handleLogout}>
                     Log out
                 </button>
             </main>

@@ -41,10 +41,10 @@ class SignInPage extends Component {
                     <button className="login__button">Sign in</button>
 
                     {this.state.error && <div className="login__message">{this.state.error}</div>}
-                    {this.state.success && <Redirect to="/" />}
+                    {this.state.success && <Redirect to="/current" />}
                 </form>
                 <p className="login-page__text">
-                    New around here? <Link to="/signup">Sign up</Link>
+                    New around here? <Link to="/register">Sign up</Link>
                 </p>
                 <Footer/>
             </main>
