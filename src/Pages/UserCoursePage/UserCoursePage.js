@@ -1,70 +1,69 @@
-import '../HomePage/HomePage.scss';
-import React from 'react';
-import { Component } from 'react';
-import Video from '../../../src/Components/Video/Video';
-import VideoListing from '../../../src/Components/VideoListing/VideoListing';
-import VideoDescription from '../../../src/Components/VideoDescription/VideoDescription';
-import axios from 'axios';
+import { render } from '@testing-library/react'
+import axios from 'axios'
+import React from 'react'
+import { Component } from 'react'
 
-class UseCoursePage extends Component{
+
+class UserCoursePage extends Component{
+
     state = {
-        selectedVideo: null,
-        videoData: [], 
-        stillLoading: true,
-    };
+        videos: [], //revisit naming convention
+        selectedVideo: null
+    }
 
-    fetchVideoDetails = (videoId) => {
+    componentDidMount(){
+        const token = sessionStorage.getItem('token');
         axios
-        .get(`http://localhost:3000/api/users/lessons${videoId}`)
-        .then((response) => {
-            console.log(videoId)
-            const videoDetail = response.data;
-            this.setState({ selectedVideo: videoDetail, stillLoading: false }); 
+        .get("http://localhost:3001/lessons", {
+            headers: {
+                Authorization: 'Bearer ' + token
+            }
         })
-    };
-
-    componentDidMount() {
-        axios
-        .get(`http://localhost:3000/api/users/lessons`)
         .then((response) => {
-            const videoResults = response.data;
-            this.setState({ videoData: videoResults });
-            this.fetchVideoDetails(videoResults[0].id);
+            const videoResults = response.data
+            this.setState({videos: videoResults})
+            const video =  videoResults.find((video) => {
+                return video.title === this.props.props.match.params.title
+            })
+            console.log(video)
+            this.setState({selectedVideo: video })
+
         })
         .catch((error) => {
             console.log(error);
         })
-    };
+    }
 
-    componentDidUpdate(prevProps, prevState) {
-        const newVideoId = this.props.match.params.videoId;
-        const firstVideoId = this.state.videoData[0].id;
-        if (newVideoId !== prevProps.match.params.videoId) {
-            const videoToLoadId = newVideoId !== undefined ? newVideoId : firstVideoId;
-            this.fetchVideoDetails(videoToLoadId);
-        }
-    };
-    
-    render() {
-        if (this.state.stillLoading) {
-            return  <div className="spinner-border text-success" role="status">
-                        <span className="visually-hidden">Loading...</span></div>;
-        }
-        
-        return (
-            <div className="Homepage">
-                <Video selectedVideo={this.state.selectedVideo}/>
-                <div className="Homepage__container">
-                    <div className="Homepage__container-section">
-                        <VideoDescription selectedVideo={this.state.selectedVideo} />
+    render(){
+        console.log(this.state.selectedVideo)
+        if(!this.state.selectedVideo){
+            return (
+                <main className="dashboard">
+                    <div className="spinner-border text-success" role="status">
+                        <span className="visually-hidden">Loading...</span>
                     </div>
-                    <div className="Homepage__container-listing">
-                        <VideoListing VideoFn={this.fetchVideoDetails} />
+                </main>
+            )
+        }
+
+        return (
+            <div>
+                <div>
+                    <div>
+                        <h1>{this.state.selectedVideo.chapter}</h1>
+                        <h3>{this.state.selectedVideo.title}</h3>
+                        <iframe 
+                            width="727" 
+                            height="409"
+                            src={`https://www.youtube.com/embed/${this.state.selectedVideo.video}`}>
+                        </iframe>
+                        <p>{this.state.selectedVideo.content}</p>
                     </div>
                 </div>
+                    
             </div>
-        );
+        )
     }
 }
 
-export default UseCoursePage;
+export default UserCoursePage

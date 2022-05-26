@@ -16,7 +16,7 @@ class SignInPage extends Component {
         event.preventDefault();
 
         axios
-            .post('http://localhost:3000/api/users/login', {
+            .post('http://localhost:3001/api/users/login', {
                 email: event.target.email.value,
                 password: event.target.password.value
             })

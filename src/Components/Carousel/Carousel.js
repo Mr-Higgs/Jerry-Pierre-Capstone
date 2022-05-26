@@ -1,7 +1,6 @@
 import React from 'react'
-import currency from '../../Assets/Images/currency-hero.jpg'
+import currency from '../../Assets/Images/hong-kong.jpg'
 import finance from '../../Assets/Images/financial-ins.jpg'
-import exchangerates from '../../Assets/Images/exchange-rates.jpg'
 import barchart from '../../Assets/Images/barchart.jpg'
 
 function Carousel() {
@@ -15,25 +14,26 @@ function Carousel() {
             </div>
             <div className="carousel-inner">
                 <div className="carousel-item active">
-                <img src={finance} className="d-block w-100" alt="..."/>
-                <div className="carousel-caption d-sm-block d-md-block">
-                    <h5>Wolf of Forex</h5>
-                    <p>This course provides an overview of how to improve the quality of investment decisions in the foreign exchange market. Technically, these methods and strategies can be applied in any financial market.</p>
-                </div>
-                </div>
-                <div className="carousel-item">
-                <img src={barchart} className="d-block w-100" alt="..."/>
-                <div className="carousel-caption d-sm-block d-md-block">
-                    <h5>Second slide label</h5>
-                    <p>Some representative placeholder content for the second slide.</p>
-                </div>
+                    <img src={finance} className="d-block w-100" alt="..."/>
+                    <div className="carousel-caption d-sm-block d-md-block">
+                        <h5 className="fs-3">Wolf of Forex</h5>
+                        <p className="fs-6">This course provides an overview of how to improve the quality of investment decisions in the foreign exchange market. Technically, these methods and strategies can be applied in any financial market.</p>
+                    </div>
                 </div>
                 <div className="carousel-item">
-                <img src={currency} className="d-block w-100" alt="..."/>
-                <div className="carousel-caption d-sm-block d-md-block">
-                    <h5>Third slide label</h5>
-                    <p>Some representative placeholder content for the third slide.</p>
+                    <img src={barchart} className="d-block w-100 mh-50" alt="..."/>
+                    <div className="carousel-caption d-sm-block d-md-block">
+                        <h5 className="fs-3">Knowledge is Power</h5>
+                        <p className="fs-6">Wolf of Forex is home to the most effective online course for learning how to trade in the Foreign Exchange Market.</p>
+                    </div>
                 </div>
+                <div className="carousel-item">
+                    <img src={currency} className="d-block w-100" alt="..."/>
+                    <div className="carousel-caption d-sm-block d-md-block">
+                        <h5 className="fs-3">By the end of the course, you will be able to...</h5>
+                        <p>Understand the driving forces in a economy, & accurately read & chart price action</p>
+                        <p></p>
+                    </div>
                 </div>
             </div>
             <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">

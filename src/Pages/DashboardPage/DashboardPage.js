@@ -19,7 +19,7 @@ class DashboardPage extends Component {
 
         // Get the data from the API
         axios
-        .get('http://localhost:3000/api/users/current', {
+        .get('http://localhost:3001/api/users/current', {
             headers: {
                 Authorization: 'Bearer ' + token
             }
@@ -43,7 +43,7 @@ class DashboardPage extends Component {
             failedAuth: true
         })
     };
-
+    
 
     render() {
         if (this.state.failedAuth) {
@@ -76,16 +76,17 @@ class DashboardPage extends Component {
 
         return (
             <main className="dashboard">
-                <h1 className="dashboard__title">Dashboard</h1>
-                <p className="dashboard__greeting">
-                    Welcome back, {first_name} {last_name}! 👋
-                </p>
-                <h2>My Profile</h2>
-                <p>Username: {email}</p>
-                <UserCoursePage />
-                <button className="dashboard__logout btn btn-success" onClick={this.handleLogout}>
-                    Log out
-                </button>
+                <div className="card mb-4">
+                    <h5 className="card-header"><strong>Dashboard</strong></h5>
+                    <div className="card-body">
+                        <h5 className="card-title">Welcome back, {first_name} {last_name}! 👋</h5>
+                        <p className="card-text"><h2>My Profile</h2><p>Username: {email}</p></p>
+                        <button className="dashboard__logout btn btn-success" onClick={this.handleLogout}>
+                            Log out
+                        </button>
+                    </div>
+                </div>
+                <UserCoursePage props={this.props}/>
             </main>
         );
     }

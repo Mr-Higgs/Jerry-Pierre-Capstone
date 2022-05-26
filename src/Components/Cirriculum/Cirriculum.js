@@ -1,6 +1,23 @@
 import React from 'react'
+import locked from '../../../src/Assets/Icons/lock-fill.svg'
+import unlocked from '../../../src/Assets/Icons/unlock-fill.svg'
+import {Link} from 'react-router-dom'
 
 function Cirriculum() {
+  
+  const titles = ["Introduction","How to use Trading View","Chart & Order Types","Pips","Brokers","Trading Sessions","What are Candlesticks?","Your Trading Plan"]
+  const titles2 = ["Exchange Rates 101", "Macroeconomics 101","The Commitment of Traders Report", "Economic News","Market Correlations","Fundamental Analysis of a Stock","Intro to Options","Fundamental Analysis of a Cryptocurrency","Crypto Wallets","Intro to Crypto"]
+  const titles3 = ["Candlestick Patterns","Chart Patterns","Confluence","Support & Resistance","Components of the Ichimoku","Strategies of Ichimoku","Fibonacci","Moving Averages","Relative Strength Index","Trading Styles","Triple Screen Techniques | Top Down Analysis"]
+  const titles4 = ["Risk Assessment","Ratios","How to Backtest","Putting it all together! Part.1","Putting it all together! Part.2"]
+  
+  const isLoggedIn = () => {
+    if (sessionStorage.getItem('token')) {
+      return true
+    } else {
+      return false
+    }
+  }
+
   return (
     <div>
       <div className="accordion" id="accordionPanelsStayOpenExample">
@@ -12,7 +29,11 @@ function Cirriculum() {
           </h2>
           <div id="panelsStayOpen-collapseOne" className="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
             <div className="accordion-body">
-              <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classNamees that we use to style each element. These classNamees control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+              {titles.map((title) => {
+                return(
+                  <Link to= {`/current/${title}`} key={title.id} className="text-decoration-none text-success"><p><img src={isLoggedIn() ? unlocked  : locked } alt="locked" />{title}</p></Link>
+                )
+              })}
             </div>
           </div>
         </div>
@@ -24,7 +45,11 @@ function Cirriculum() {
           </h2>
           <div id="panelsStayOpen-collapseTwo" className="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
             <div className="accordion-body">
-              <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classNamees that we use to style each element. These classNamees control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+              {titles2.map((title) => {
+                return(
+                  <Link to= {`/current/${title}`} key={title.id} className="text-decoration-none text-success"><p><img src={isLoggedIn() ? unlocked  : locked } alt="locked" />{title}</p></Link>
+                )
+              })}
             </div>
           </div>
         </div>
@@ -36,7 +61,11 @@ function Cirriculum() {
           </h2>
           <div id="panelsStayOpen-collapseThree" className="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
             <div className="accordion-body">
-              <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classNamees that we use to style each element. These classNamees control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+              {titles3.map((title) => {
+                return(
+                  <Link to= {`/current/${title}`} key={title.id} className="text-decoration-none text-success"><p><img src={isLoggedIn() ? unlocked  : locked } alt="locked" />{title}</p></Link>
+                )
+              })}
             </div>
           </div>
         </div>
@@ -48,11 +77,14 @@ function Cirriculum() {
           </h2>
           <div id="panelsStayOpen-collapseFour" className="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingFour">
             <div className="accordion-body">
-              <strong>This is the fourth item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classNamees that we use to style each element. These classNamees control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+              {titles4.map((title) => {
+                return(
+                  <Link to= {`/current/${title}`} key={title.id} className="text-decoration-none text-success"><p><img src={isLoggedIn() ? unlocked  : locked } alt="locked" />{title}</p></Link>
+                )
+              })}
             </div>
           </div>
         </div>
-
       </div>
     </div>
   )

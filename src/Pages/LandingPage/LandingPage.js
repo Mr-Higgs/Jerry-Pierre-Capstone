@@ -6,8 +6,8 @@ import SubscriptionSignUp from '../../Components/SubscriptionSignUp/Subscription
 function LandingPage() {
   return (
     <div>
-      <OnlineCoursePkg />
       <SubscriptionSignUp />
+      <OnlineCoursePkg />
     </div>
     
   )

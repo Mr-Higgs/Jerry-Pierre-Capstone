@@ -16,7 +16,7 @@ class SignUpPage extends Component {
         event.preventDefault();
 
         axios
-        .post("http://localhost:3000/api/users/register", {
+        .post("http://localhost:3001/api/users/register", {
             email: event.target.email.value,
             password: event.target.password.value,
             first_name: event.target.first_name.value,
