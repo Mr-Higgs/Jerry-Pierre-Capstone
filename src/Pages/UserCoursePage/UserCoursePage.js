@@ -39,8 +39,13 @@ class UserCoursePage extends Component{
         if(!this.state.selectedVideo){
             return (
                 <main className="dashboard">
-                    <div className="spinner-border text-success" role="status">
-                        <span className="visually-hidden">Loading...</span>
+                    <div className="card">
+                        <h5 className="card-header">Cirriculum</h5>
+                        <div className="card-body">
+                            <h5 className="card-title">Course content is not yet published</h5>
+                            <p className="card-text">Return to the home page and select a published lesson</p>
+                            <a href="/" className="btn btn-success mx-2">Home</a>
+                        </div>
                     </div>
                 </main>
             )
