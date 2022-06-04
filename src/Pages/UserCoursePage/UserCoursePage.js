@@ -58,8 +58,8 @@ class UserCoursePage extends Component{
                         <h1>{this.state.selectedVideo.chapter}</h1>
                         <h3>{this.state.selectedVideo.title}</h3>
                         <iframe 
-                            width="727" 
-                            height="409"
+                            width="1280" 
+                            height="720"
                             src={`https://www.youtube.com/embed/${this.state.selectedVideo.video}`}>
                         </iframe>
                         <p>{this.state.selectedVideo.content}</p>
